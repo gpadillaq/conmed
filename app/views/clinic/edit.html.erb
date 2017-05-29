@@ -1,0 +1,36 @@
+<h1>Clinica</h1>
+<p></p>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Configuraciones Generales de la Clinica</h3>
+  </div>
+
+  <div class="panel-body">
+
+    <%= form_for @clinic, as: :clinic, url: { action: "update" }, class: 'form-horizontal' do |f| %>
+        <div class='form-group'>
+          <label for="name">Nombre:</label>
+          <%= f.text_field :name, class: 'form-control', placeholder: 'Nombre' %>
+        </div>
+
+        <div class='form-group'>
+          <label for="address">Dirección:</label>
+          <%= f.text_area :address, class: 'form-control', placeholder: 'Dirección' %>
+        </div>
+
+        <div class='form-group'>
+          <label for="phone">Teléfono:</label>
+          <%= f.text_field :phone, class: 'form-control', placeholder: 'Teléfono' %>
+        </div>
+
+        <div class='form-group'>
+          <label for="email">Correo Electrónico:</label>
+          <%= f.text_field :email, class: 'form-control', placeholder: 'Correo Electrónico' %>
+        </div>
+
+        <%= f.submit "Guardar", class: 'btn btn-primary pull-right'%>
+    <% end %>
+
+  </div>
+</div>
