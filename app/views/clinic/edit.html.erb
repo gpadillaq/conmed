@@ -1,5 +1,4 @@
 <h1>Clinica</h1>
-<p></p>
 
 <div class="panel panel-default">
   <div class="panel-heading">
@@ -11,12 +10,12 @@
     <%= form_for @clinic, as: :clinic, url: { action: "update" }, class: 'form-horizontal' do |f| %>
         <div class='form-group'>
           <label for="name">Nombre:</label>
-          <%= f.text_field :name, class: 'form-control', placeholder: 'Nombre' %>
+          <%= f.text_field :name, class: 'form-control', placeholder: 'Nombre', required: true %>
         </div>
 
         <div class='form-group'>
           <label for="address">Dirección:</label>
-          <%= f.text_area :address, class: 'form-control', placeholder: 'Dirección' %>
+          <%= f.text_area :address, class: 'form-control', placeholder: 'Dirección', required: true %>
         </div>
 
         <div class='form-group'>
