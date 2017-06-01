@@ -6,7 +6,8 @@ class CreatePacients < ActiveRecord::Migration[5.0]
       t.string :id_number
       t.string :phone
       t.string :email
-      t.number :edad, null: false
+      t.numeric :age, null: false
+      t.numeric :gender, null: false
 
       t.timestamps
     end

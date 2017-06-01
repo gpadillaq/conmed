@@ -1,4 +1,5 @@
 # We define the pacients gender
-
-MALE = 1
-FEMALE = 2
+class Gender
+  MALE = ['Masculino',1]
+  FEMALE = ['Femenino',2]
+end

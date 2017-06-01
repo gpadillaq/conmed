@@ -1,8 +1,42 @@
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title">Configuraciones Generales de la Clinica</h3>
+    <h3 class="panel-title">Búsqueda</h3>
   </div>
-
   <div class="panel-body">
   </div>
+</div>
+
+<div>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Género</th>
+        <th>Edad</th>
+        <th>Cédula</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @pacients.each do |p| %>
+        <tr>
+          <td><a href="/<%= p.id %>/edit"><%= p.first_name %></a></td>
+          <td><%= p.last_name %></td>
+          <td><%= p.gender %></td>
+          <td><%= p.age.to_i %></td>
+          <td><%= p.id_number %></td>
+          <td>
+            <a href="/<%= p.id %>/edit">
+              <span class="glyphicon glyphicon-edit"></span>
+            </a>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<div>
+  <a href="/pacient/new" class="btn btn-info pull-right" role="button">Crear Paciente</a>
 </div>

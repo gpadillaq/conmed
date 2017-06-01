@@ -1,0 +1,38 @@
+<%= form_for @pacient, url: { action: "create" } do |f| %>
+    <div class='form-group'>
+      <label for="first_name">Nombre:</label>
+      <%= f.text_field :first_name, class: 'form-control', placeholder: 'Nombre', required: true %>
+    </div>
+
+    <div class='form-group'>
+      <label for="last_name">Apellido:</label>
+      <%= f.text_field :last_name, class: 'form-control', placeholder: 'Apellido', required: true %>
+    </div>
+
+    <div class='form-group'>
+      <label for="id_number">Cédula:</label>
+      <%= f.text_field :id_number, class: 'form-control', placeholder: 'Cédula', required: true %>
+    </div>
+
+    <div class='form-group'>
+      <label for="phone">Teléfono:</label>
+      <%= f.text_field :phone, class: 'form-control', placeholder: 'Teléfono' %>
+    </div>
+
+    <div class='form-group'>
+      <label for="email">Correo Electrónico:</label>
+      <%= f.text_field :email, class: 'form-control', placeholder: 'Correo Electrónico' %>
+    </div>
+
+    <div class='form-group'>
+      <label for="age">Edad:</label>
+      <%= f.text_field :age, class: 'form-control', placeholder: 'Edad' %>
+    </div>
+
+    <div class='form-group'>
+      <label for="gender">Género:</label>
+      <%= f.select(:gender,  [[Gender::MALE[0],Gender::MALE[1]], [Gender::FEMALE[0], Gender::FEMALE[1]]], { :class => 'dropdown-toggle', required: true }) %>
+    </div>
+
+    <%= f.submit "Guardar", class: 'btn btn-primary pull-right'%>
+<% end %>
