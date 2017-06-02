@@ -38,6 +38,8 @@ ActiveRecord::Schema.define(version: 20170530193052) do
     t.string   "id_number"
     t.string   "phone"
     t.string   "email"
+    t.decimal  "age",        null: false
+    t.decimal  "gender",     null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
