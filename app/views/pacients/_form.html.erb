@@ -1,4 +1,4 @@
-<%= form_for @pacient, url: { action: "create" } do |f| %>
+<%= form_for @pacient do |f| %>
     <div class='form-group'>
       <label for="first_name">Nombre:</label>
       <%= f.text_field :first_name, class: 'form-control', placeholder: 'Nombre', required: true %>
@@ -34,5 +34,6 @@
       <%= f.select(:gender,  [[Gender::MALE[0],Gender::MALE[1]], [Gender::FEMALE[0], Gender::FEMALE[1]]], { :class => 'dropdown-toggle', required: true }) %>
     </div>
 
-    <%= f.submit "Guardar", class: 'btn btn-primary pull-right'%>
+    <%= f.submit "Guardar", class: 'btn btn-primary'%>
+    <%= link_to 'Cancelar', pacients_path, class: 'btn btn-danger' %>
 <% end %>

@@ -21,15 +21,15 @@
     <tbody>
       <% @pacients.each do |p| %>
         <tr>
-          <td><a href="/<%= p.id %>/edit"><%= p.first_name %></a></td>
+          <td><%= p.first_name %></td>
           <td><%= p.last_name %></td>
           <td><%= p.gender %></td>
           <td><%= p.age.to_i %></td>
           <td><%= p.id_number %></td>
           <td>
-            <a href="/<%= p.id %>/edit">
-              <span class="glyphicon glyphicon-edit"></span>
-            </a>
+            <%= link_to '', pacient_path(p), class: 'glyphicon glyphicon-eye-open' %>
+            <%= link_to '', edit_pacient_path(p), class: 'glyphicon glyphicon-edit' %>
+            <%= link_to '', pacient_path(p), class: 'glyphicon glyphicon-trash', confirm: 'Está seguro que desea Eliminar este paciente?' %>
           </td>
         </tr>
       <% end %>
@@ -38,5 +38,5 @@
 </div>
 
 <div>
-  <a href="/pacient/new" class="btn btn-info pull-right" role="button">Crear Paciente</a>
+  <%= link_to 'Nuevo', new_pacient_path, class: 'btn btn-default pull-right' %>
 </div>
