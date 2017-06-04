@@ -1,39 +1,13 @@
+##
+# Manejador de peticiones dirigidas a pacientes.
 class PacientsController < ApplicationController
+  include FormConcern
 
-  def index
-    @pacients = Pacient.all
-  end
+  private
 
-  def new
-    @pacient = Pacient.new
-  end
-
-  def show
-    id = params[:id]
-    if id.present?
-      @pacient = Pacient.find(id)
-    end
-  end
-
-  def edit
-    id = params[:id]
-    if id.present?
-      @pacient = Pacient.find(id)
-    end
-  end
-
-  def save(pacient)
-    if pacient.present
-      begin
-        @pacient.attributes = pacient_params
-        @pacient.save!
-        redirect_to pacient_index_url
-      end
-    end
-  end
-
+  ##
+  # Método de encapsulacion de los parametros permitodos en este controller.
   def pacient_params
-    params.require(:pacients).permit(:first_name, :last_name, :age, :gender, :id_number, :phone, :email)
+    params.require(:pacient).permit(:first_name, :last_name, :age, :gender, :id_number, :phone, :email)
   end
-
 end
