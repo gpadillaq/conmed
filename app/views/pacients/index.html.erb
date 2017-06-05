@@ -1,4 +1,44 @@
 <h1>Pacientes</h1>
 
-<%= render :partial => "search" %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Búsqueda</h3>
+  </div>
+  <div class="panel-body">
+  </div>
+</div>
 
+<div>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Género</th>
+        <th>Edad</th>
+        <th>Cédula</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @records.each do |p| %>
+        <tr>
+          <td><%= p.first_name %></td>
+          <td><%= p.last_name %></td>
+          <td><%= p.gender %></td>
+          <td><%= p.age.to_i %></td>
+          <td><%= p.id_number %></td>
+          <td>
+            <%= link_to '', pacient_path(p), class: 'glyphicon glyphicon-eye-open' %>
+            <%= link_to '', edit_pacient_path(p), class: 'glyphicon glyphicon-edit' %>
+            <%= link_to '', pacient_path(p), class: 'glyphicon glyphicon-trash', confirm: 'Está seguro que desea Eliminar este paciente?' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<div>
+  <%= link_to 'Nuevo', new_pacient_path, class: 'btn btn-default pull-right' %>
+</div>

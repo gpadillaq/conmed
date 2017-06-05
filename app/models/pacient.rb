@@ -1,4 +1,6 @@
 class Pacient < ActiveRecord::Base
+  ##
+  # Validaciones de campos requeridos.
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :age, presence: true
@@ -6,7 +8,7 @@ class Pacient < ActiveRecord::Base
 
 
   def display_name
-    self.first_name + ' ' + self.last_name
+    [self.first_name, self.last_name].join(' ')
   end
 
 end
