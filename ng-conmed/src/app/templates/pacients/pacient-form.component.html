@@ -1,0 +1,35 @@
+<form #f="ngForm" (ngSubmit)="save(f.value, f.valid)" novalidate>
+  <input type="hidden" name="id" [(ngModel)]="pacient.id">
+  <div class="form-group">
+    <label class="control-label" for="first_name">Nombre:</label>
+    <input class='form-control' placeholder='Nombre' required type="text" name="first_name" [(ngModel)]="pacient.first_name">
+  </div>
+  <div class="form-group">
+    <label class="control-label" for="first_name">Apellido:</label>
+    <input class='form-control' placeholder='Apellido' required type="text" name="last_name" [(ngModel)]="pacient.last_name">
+  </div>
+  <div class="form-group">
+    <label class="control-label" for="first_name">Cédula:</label>
+    <input class='form-control' placeholder='Cédula' required type="text" name="id_number" [(ngModel)]="pacient.id_number">
+  </div>
+  <div class="form-group">
+    <label class="control-label" for="first_name">Teléfono:</label>
+    <input class='form-control' placeholder='Teléfono' required type="text" name="phone" [(ngModel)]="pacient.phone">
+  </div>
+  <div class="form-group">
+    <label class="control-label" for="first_name">Correo Electrónico:</label>
+    <input class='form-control' placeholder='Correo Electrónico' required type="text" name="email" [(ngModel)]="pacient.email">
+  </div>
+  <div class="form-group">
+    <label class="control-label" for="first_name">Edad:</label>
+    <input class='form-control' placeholder='Edad' required type="text" name="age" [(ngModel)]="pacient.age">
+  </div>
+  <div class="form-group">
+    <label class="control-label" for="first_name">Genero:</label>
+    <select class="dropdown-toggle" name="gender" [(ngModel)]="pacient.gender" required>
+      <option *ngFor="let gender of genders" [ngValue]="gender.id">{{gender.description}}</option>
+    </select>
+  </div>
+  <button type="submit" class="btn btn-primary">Guardar</button>
+  <a routerLink="/pacients" routerLinkActive="active" class="btn btn-danger">Cancelar</a>
+</form>

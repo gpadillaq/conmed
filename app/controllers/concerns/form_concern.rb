@@ -17,6 +17,11 @@ module FormConcern
     # del index conrrespondiente al controlador.
     def index
       flash.now[:alert] = 'No existen registros para los datos filtrados' if @records.empty?
+
+      respond_to do |format|
+        format.html { @records }
+        format.json { render json: @records.to_json }
+      end
     end
 
     ##
@@ -28,7 +33,12 @@ module FormConcern
     #   def edit; end
     #   def show; end
     [:new, :edit, :show].each do |method|
-      define_method(method) {}
+      define_method(method) do
+        respond_to do |format|
+          format.html { @record }
+          format.json { render json: @record.to_json }
+        end
+      end
     end
 
     ##
@@ -106,11 +116,33 @@ module FormConcern
     begin
       @record.attributes = record_params
       @record.save!
-      flash[:success] = 'Datos almacenados exitosamente!'
-      redirect_to index_path
+      respond_to do |format|
+        format.html do
+          flash[:success] = 'Datos almacenados exitosamente!'
+          redirect_to index_path
+        end
+        format.json do
+          render json: {
+            record: @record.to_json,
+            message: 'Datos almacenados exitosamente!'
+          }
+        end
+      end
     rescue ActiveRecord::RecordInvalid
-      flash.now[:danger] = 'Verifique los datos insertados'
-      render back_path
+      respond_to do |format|
+        format.html do
+          flash.now[:danger] = 'Verifique los datos insertados'
+          render back_path
+        end
+        format.json do
+          render(json: {
+            record: @record.to_json, message: 'Verifique los datos insertados',
+            errors: @record.errors.to_json
+          })
+        end
+      end
+
+
     end
   end
 end

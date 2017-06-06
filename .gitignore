@@ -4,3 +4,4 @@ db/test.sqlite3
 log/
 tmp/
 .byebug_history
+ng-conmed/node_modules

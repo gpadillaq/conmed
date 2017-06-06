@@ -1,0 +1,37 @@
+<h1>Pacientes</h1>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Búsqueda</h3>
+  </div>
+  <div class="panel-body">
+  </div>
+</div>
+
+<div>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Género</th>
+        <th>Edad</th>
+        <th>Cédula</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let pacient of pacients">
+        <td>{{pacient.first_name }}</td>
+        <td>{{pacient.last_name }}</td>
+        <td>{{pacient.gender }}</td>
+        <td>{{pacient.age }}</td>
+        <td>{{pacient.id_number }}</td>
+        <td>
+          <a routerLink="{{pacient.id}}" routerLinkActive="active" class='glyphicon glyphicon-eye-open'></a>
+          <a routerLink="form/{{pacient.id}}" routerLinkActive="active" class='glyphicon glyphicon-edit'></a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

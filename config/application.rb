@@ -13,5 +13,12 @@ module Conmed
     # -- all .rb files in that directory are automatically loaded.
     config.assets.paths << Rails.root.join("vendor","assets", "fonts")
     config.autoload_paths += %W(#{config.root}/catalogos)
+
+    config.middleware.use Rack::Cors do
+      allow do
+        origins '*'
+        resource '*', headers: :any, methods: [:put, :get, :post]
+      end
+    end
   end
 end
