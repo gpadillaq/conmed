@@ -5,10 +5,25 @@
     </div>
 
     <div class="form-group <%= 'has-error' if @record.errors[:appointment_date].present? %>">
-      <label class="control-label" for="appointment_date">Fecha de la Cita:</label>
-      <%= f.text_field :appointment_date, class: 'form-control', placeholder: 'Fecha de la Cita', required: true %>
+      <div class="input-group date" id="cita-fecha">
+        <%= f.text_field :appointment_date, class: 'form-control', placeholder: 'Fecha de la Cita', required: true %>
+        <span class="input-group-addon">
+          <span class="glyphicon glyphicon-time"></span>
+        </span>
+      </div>
+    </div>
+
+    <div class="form-group <%= 'has-error' if @record.errors[:pacient].present? %>">
+      <label class="control-label" for="pacient_id">Notas:</label>
+      <%= f.text_area :notes, class: 'form-control', placeholder: 'Notas', rows: "5" %>
     </div>
 
     <%= f.submit "Guardar", class: 'btn btn-primary'%>
     <%= link_to 'Cancelar', pacients_path, class: 'btn btn-danger' %>
 <% end %>
+
+<script type="text/javascript">
+  $(function () {
+    $('#cita-fecha').datetimepicker();
+  });
+</script>
