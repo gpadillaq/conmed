@@ -54,6 +54,10 @@ module FormConcern
   # Optiene la coleccion de datos correspondiente al modelo al que pertenece al controlador
   def scoped_collection
     @records = model.all
+    respond_to do |format|
+      format.html { @records }
+      format.json { render json: @records.to_json }
+    end
   end
 
   ##

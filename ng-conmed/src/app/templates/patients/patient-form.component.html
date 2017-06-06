@@ -1,0 +1,6 @@
+<form>
+  <div class="form-group <%= 'has-error' if @record.errors[:first_name].present? %>">
+    <label class="control-label" for="first_name">Nombre:</label>
+    <input class='form-control' placeholder='Nombre' required type="text" name="first_name" ngModel="patients.first_name">
+  </div>
+</form>
