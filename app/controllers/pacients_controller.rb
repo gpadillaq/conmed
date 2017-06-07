@@ -2,7 +2,23 @@
 # Manejador de peticiones dirigidas a pacientes.
 class PacientsController < ApplicationController
   include FormConcern
+  def index
+    @pacients = Pacient.all
+    render component: 'Pacients', props: { pacients: @pacients }
+  end
 
+  def create
+    @pacient = Pacient.new(pacient_params)
+    respond_to do |format|
+      format.json do
+        if @pacient.save
+          render :json => @pacient
+        else
+          render :json => { :errors => @pacient.errors.messages }, :status => 422
+        end
+      end
+    end
+  end
   private
 
   ##

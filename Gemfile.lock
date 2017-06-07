@@ -39,6 +39,10 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
     arel (7.1.4)
+    babel-source (5.8.35)
+    babel-transpiler (0.7.0)
+      babel-source (>= 4.0, < 6)
+      execjs (~> 2.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     bootstrap3-datetimepicker-rails (4.17.47)
@@ -53,6 +57,7 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
+    connection_pool (2.2.1)
     debug_inspector (0.0.3)
     erubis (2.7.0)
     execjs (2.7.0)
@@ -114,6 +119,12 @@ GEM
       thor (>= 0.18.1, < 2.0)
     rake (12.0.0)
     rdoc (4.3.0)
+    react-rails (2.2.0)
+      babel-transpiler (>= 0.7.0)
+      connection_pool
+      execjs
+      railties (>= 3.2)
+      tilt
     ref (2.0.0)
     sass (3.4.24)
     sass-rails (5.0.6)
@@ -170,6 +181,7 @@ DEPENDENCIES
   pg
   puma (~> 3.4)
   rails (= 5.0.2)
+  react-rails
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   spring
