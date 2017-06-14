@@ -1,26 +1,26 @@
 var Pacients = React.createClass({
-    addNew: function() {
-      alert('In here');
-      location.href = "/pacients/new";
+    addNew: function () {
+        location.href = "/pacients/new";
     },
-    render: function() {
-        pacients = this.props.pacients.map( function(pacient) {
-        return (
-            <Pacient pacient={pacient} key={pacient.id} />
-        );
+    render: function () {
+        pacients = this.props.pacients.map(function (pacient) {
+            return (
+                <Pacient pacient={pacient} key={pacient.id}/>
+            );
         });
         return (
             <div>
                 <h1>Pacientes</h1>
-                <div id='pacients'>
+                <div>
                     <table id="pacientes" className="table table-bordered table-striped">
                         <thead>
-                            <tr>
-                                <th>Nombre</th>
-                                <th>Apellido</th>
-                                <th>Genero</th>
-                                <th>Edad</th>
-                            </tr>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Genero</th>
+                            <th>Edad</th>
+                            <th></th>
+                        </tr>
                         </thead>
                         <tbody>
                             {pacients}

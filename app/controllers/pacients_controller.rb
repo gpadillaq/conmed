@@ -12,6 +12,11 @@ class PacientsController < ApplicationController
     render component: 'NewPacient', props: { pacient: @pacient }
   end
 
+  def edit
+    @pacient = Pacient.find(params[:id])
+    render component: 'NewPacient', props: { pacient: @pacient }
+  end
+
   def create
     @pacient = Pacient.new(pacient_params)
     respond_to do |format|

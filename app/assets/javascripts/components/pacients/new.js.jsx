@@ -15,7 +15,7 @@ var NewPacient = React.createClass({
     handleFirstNameChange(e) {
         var newPacient = this.state.pacient;
         newPacient.first_name = e.target.value;
-        this.setState({ first_name : newPacient});
+        this.setState({first_name: newPacient});
     },
 
     handleLastNameChange(e) {
@@ -44,7 +44,7 @@ var NewPacient = React.createClass({
                 pacient: that.state.pacient,
             },
             url: '/pacients.json',
-            success: function(res) {
+            success: function (res) {
                 var newPacientList = that.state.pacients;
                 newPacientList.push(res);
                 that.setState({
@@ -58,43 +58,50 @@ var NewPacient = React.createClass({
                     errors: {}
                 });
             },
-            error: function(res) {
+            error: function (res) {
                 that.setState({errors: res.responseJSON.errors})
             }
         });
     },
 
-    render: function() {
+    cancel: function() {
+        location.href = "/pacients/";
+    },
+
+    render: function () {
         return (
-            <div>
-                <h1>Añadir Paciente</h1>
-
-                <div className="form-group">
-                    <label className="control-label" for="pacient_id">Nombre:</label>
-                    <input type="text" onChange={this.handleFirstNameChange} /><br />
-                    <span style={{color: 'red'}}>{ this.state.errors.first_name }</span>
+            <div className="panel panel-default">
+                <div className="panel-heading">
+                    <h3 className="panel-title">Añadir Paciente</h3>
                 </div>
+                <div className="panel-body">
+                    <div className="form-group">
+                        <label className="control-label" for="pacient_id">Nombre:</label>
+                        <input className="form-control" type="text" onChange={this.handleFirstNameChange}/><br />
+                        <span style={{color: 'red'}}>{ this.state.errors.first_name }</span>
+                    </div>
 
-                <div className="form-group">
-                    <label className="control-label" for="pacient_id">Apellido:</label>
-                    <input type="text" onChange={this.handleLastNameChange} /><br />
-                    <span style={{color: 'red'}}>{ this.state.errors.last_name }</span>
+                    <div className="form-group">
+                        <label className="control-label" for="pacient_id">Apellido:</label>
+                        <input className="form-control" type="text" onChange={this.handleLastNameChange}/><br />
+                        <span style={{color: 'red'}}>{ this.state.errors.last_name }</span>
+                    </div>
+
+                    <div className="form-group">
+                        <label className="control-label" for="pacient_id">Género:</label>
+                        <input className="form-control" type="text" onChange={this.handleGenderChange}/><br />
+                        <span style={{color: 'red'}}>{ this.state.errors.gender }</span>
+                    </div>
+
+                    <div className="form-group">
+                        <label className="control-label" for="pacient_id">Edad:</label>
+                        <input className="form-control" type="text" onChange={this.handleAgeChange}/><br />
+                        <span style={{color: 'red'}}>{ this.state.errors.age }</span>
+                    </div>
+
+                    <button className="btn btn-success pull" onClick={ this.savePacient}>Guardar</button>
+                    <button className="btn btn-danger pull" onClick={ this.cancel}>Cancelar</button>
                 </div>
-
-                <div className="form-group">
-                    <label className="control-label" for="pacient_id">Género:</label>
-                    <input type="text" onChange={this.handleGenderChange} /><br />
-                    <span style={{color: 'red'}}>{ this.state.errors.gender }</span>
-                </div>
-
-                <div className="form-group">
-                    <label className="control-label" for="pacient_id">Edad:</label>
-                    <input type="text" onChange={this.handleAgeChange} /><br />
-                    <span style={{color: 'red'}}>{ this.state.errors.age }</span>
-                </div>
-
-                <button className="btn btn-success pull-right" onClick={ this.savePacient}>Guardar</button>
-
             </div>
         );
     }
