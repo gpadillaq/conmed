@@ -15,25 +15,25 @@ var NewPacient = React.createClass({
     handleFirstNameChange(e) {
         var newPacient = this.state.pacient;
         newPacient.first_name = e.target.value;
-        this.setState({pacient: newPacient});
+        this.setState({ first_name : newPacient});
     },
 
     handleLastNameChange(e) {
         var newPacient = this.state.pacient;
         newPacient.last_name = e.target.value;
-        this.setState({pacient: newPacient});
+        this.setState({last_name: newPacient});
     },
 
     handleGenderChange(e) {
         var newPacient = this.state.pacient;
         newPacient.gender = e.target.value;
-        this.setState({pacient: newPacient});
+        this.setState({gender: newPacient});
     },
 
     handleAgeChange(e) {
         var newPacient = this.state.pacient;
         newPacient.age = e.target.value;
-        this.setState({pacient: newPacient});
+        this.setState({age: newPacient});
     },
 
     savePacient() {
@@ -69,27 +69,27 @@ var NewPacient = React.createClass({
             <div>
                 <h1>Añadir Paciente</h1>
 
-                <div class="form-group">
-                    <label class="control-label" for="pacient_id">Nombre:</label>
+                <div className="form-group">
+                    <label className="control-label" for="pacient_id">Nombre:</label>
                     <input type="text" onChange={this.handleFirstNameChange} /><br />
                     <span style={{color: 'red'}}>{ this.state.errors.first_name }</span>
                 </div>
 
-                <div class="form-group">
-                    <label class="control-label" for="pacient_id">Apellido:</label>
+                <div className="form-group">
+                    <label className="control-label" for="pacient_id">Apellido:</label>
                     <input type="text" onChange={this.handleLastNameChange} /><br />
                     <span style={{color: 'red'}}>{ this.state.errors.last_name }</span>
                 </div>
 
-                <div class="form-group">
-                    <label class="control-label" for="pacient_id">Género:</label>
+                <div className="form-group">
+                    <label className="control-label" for="pacient_id">Género:</label>
                     <input type="text" onChange={this.handleGenderChange} /><br />
                     <span style={{color: 'red'}}>{ this.state.errors.gender }</span>
                 </div>
 
-                <div class="form-group">
-                    <label class="control-label" for="pacient_id">Edad:</label>
-                    <input type="text" onChange={this.handleFirstAgeChange} /><br />
+                <div className="form-group">
+                    <label className="control-label" for="pacient_id">Edad:</label>
+                    <input type="text" onChange={this.handleAgeChange} /><br />
                     <span style={{color: 'red'}}>{ this.state.errors.age }</span>
                 </div>
 

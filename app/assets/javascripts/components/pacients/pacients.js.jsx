@@ -1,9 +1,13 @@
 var Pacients = React.createClass({
+    addNew: function() {
+      alert('In here');
+      location.href = "/pacients/new";
+    },
     render: function() {
         pacients = this.props.pacients.map( function(pacient) {
-            return (
-                <Pacient pacient={pacient} key={pacient.id} />
-            );
+        return (
+            <Pacient pacient={pacient} key={pacient.id} />
+        );
         });
         return (
             <div>
@@ -22,9 +26,7 @@ var Pacients = React.createClass({
                             {pacients}
                         </tbody>
                     </table>
-
-                    <button className="btn btn-success pull-right">Añadir Paciente</button>
-
+                    <button className="btn btn-success pull-right" onClick={this.addNew}>Añadir Paciente</button>
                 </div>
             </div>
         );
