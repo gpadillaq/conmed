@@ -2,7 +2,7 @@ import {Router, ActivatedRoute, Params} from '@angular/router';
 import {OnInit, Component} from '@angular/core';
 
 import {PacientsService} from '../../services/pacients.services';
-import { Pacients } from './pacients';
+import {Pacient, Gender, genders} from './pacient-model';
 
 @Component({
   selector: 'pacient-detail',
@@ -11,17 +11,20 @@ import { Pacients } from './pacients';
 })
 
 export class PacientDetailComponent {
-  pacient: Pacients;
+  pacient: Pacient;
+  genders: Gender[];
 
-  constructor(private activatedRoute: ActivatedRoute, private pacientsService: PacientsService) {}
+  constructor(private activatedRoute: ActivatedRoute, private pacientsService: PacientsService) {
+    this.pacient = new Pacient();
+    this.genders = genders;
+  }
 
   ngOnInit() {
-    // subscribe to router event
     this.activatedRoute.params.subscribe((params: Params) => {
       let id = params['id'];
       if (id !== undefined) {
-        this.pacientsService.getPacient(id).subscribe(pacients => {
-          this.pacient = pacients;
+        this.pacientsService.getPacient(id).subscribe(pacient => {
+          this.pacient = new Pacient(pacient);
         });
       }
     });

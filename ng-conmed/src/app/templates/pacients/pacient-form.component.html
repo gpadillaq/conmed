@@ -1,4 +1,4 @@
-<form #f="ngForm" (ngSubmit)="save(f.value, f.valid)" novalidate>
+<form #f="ngForm" (ngSubmit)="save(f.value, f.valid)">
   <input type="hidden" name="id" [(ngModel)]="pacient.id">
   <div class="form-group">
     <label class="control-label" for="first_name">Nombre:</label>

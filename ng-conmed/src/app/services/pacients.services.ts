@@ -18,8 +18,7 @@ export class PacientsService {
                .map(res => res.json());
   }
   putPacient(pacient) {
-    console.log(pacient);
-    this.http
+    return this.http
         .put(`${this.baseUrl}/${pacient.id}`, pacient, new RequestOptions({headers: this.getHeaders()})).subscribe(pacient => {
           console.log(pacient);
         });
