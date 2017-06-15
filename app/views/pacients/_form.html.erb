@@ -1,11 +1,11 @@
 <%= form_for @record do |f| %>
     <div class="form-group <%= 'has-error' if @record.errors[:first_name].present? %>">
-      <label class="control-label" for="first_name">Nombre:</label>
+      <label class="control-label" for="first_name">Nombres:</label>
       <%= f.text_field :first_name, class: 'form-control', placeholder: 'Nombre', required: true %>
     </div>
 
     <div class="form-group <%= 'has-error' if @record.errors[:last_name].present? %>">
-      <label class="control-label" for="last_name">Apellido:</label>
+      <label class="control-label" for="last_name">Apellidos:</label>
       <%= f.text_field :last_name, class: 'form-control', placeholder: 'Apellido', required: true %>
     </div>
 
