@@ -7,3 +7,5 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 Clinic.create({ name: 'Clínica', address: 'Dirección'})
+Gender.create({ name: 'Masculino' })
+Gender.create({ name: 'Femenino' })
