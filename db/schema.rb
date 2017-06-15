@@ -41,6 +41,12 @@ ActiveRecord::Schema.define(version: 20170605203918) do
     t.string "abbreviation", null: false
   end
 
+  create_table "genders", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "pacients", force: :cascade do |t|
     t.string   "first_name", null: false
     t.string   "last_name",  null: false
@@ -48,9 +54,10 @@ ActiveRecord::Schema.define(version: 20170605203918) do
     t.string   "phone"
     t.string   "email"
     t.decimal  "age",        null: false
-    t.decimal  "gender",     null: false
+    t.integer  "gender_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["gender_id"], name: "index_pacients_on_gender_id", using: :btree
   end
 
   create_table "states", force: :cascade do |t|
@@ -62,5 +69,6 @@ ActiveRecord::Schema.define(version: 20170605203918) do
 
   add_foreign_key "appointments", "pacients"
   add_foreign_key "clinics", "states"
+  add_foreign_key "pacients", "genders"
   add_foreign_key "states", "countries"
 end

@@ -25,7 +25,7 @@
         <tr>
           <td><%= p.first_name %></td>
           <td><%= p.last_name %></td>
-          <td><%= p.gender %></td>
+          <td><%= Gender.find(p.gender_id).display_name %></td>
           <td><%= p.age.to_i %></td>
           <td><%= p.id_number %></td>
           <td>

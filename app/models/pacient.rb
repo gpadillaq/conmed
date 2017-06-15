@@ -4,7 +4,7 @@ class Pacient < ActiveRecord::Base
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :age, presence: true
-  validates :gender, presence: true
+  validates :gender_id, presence: true
 
 
   def display_name
