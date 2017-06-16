@@ -15,14 +15,18 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <% if user_signed_in? %>
+    <%= render :partial => "layouts/menu" %>
 
-<%= render :partial => "layouts/menu" %>
-
-<div class="container">
-  <%= render 'shared/flash', flash: flash %>
-  <%= yield %>
-</div>
-
+    <div class="container">
+      <%= render 'shared/flash', flash: flash %>
+      <%= yield %>
+    </div>
+  <% else %>
+    <div class="container">
+      <%= render 'shared/flash', flash: flash %>
+      <%= yield %>
+    </div>
+  <% end %>
 </body>
-
 </html>
