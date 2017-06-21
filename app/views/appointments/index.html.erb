@@ -8,6 +8,7 @@
       <th>Paciente</th>
       <th>Fecha de la Cita</th>
       <th>Fecha de Creación de la Cita</th>
+      <th>Nota</th>
       <th></th>
     </tr>
     </thead>
@@ -17,6 +18,7 @@
           <td><%= Pacient.find(p.pacient_id).display_name %></td>
           <td><%= p.appointment_date %></td>
           <td><%= p.created_at %></td>
+          <td><%= p.notes %></td>
           <td>
             <%= link_to '', appointment_path(p), class: 'glyphicon glyphicon-eye-open' %>
             <%= link_to '', edit_pacient_path(p), class: 'glyphicon glyphicon-edit' %>
