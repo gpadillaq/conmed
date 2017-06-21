@@ -2,7 +2,7 @@ class CreateAppointments < ActiveRecord::Migration[5.0]
   def change
     create_table :appointments do |t|
       t.references :pacient, null: false
-      t.timestamp :appointment_date, null: false
+      t.datetime :appointment_date, null: false
       t.string :notes
 
       t.timestamps
