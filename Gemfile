@@ -37,6 +37,8 @@ gem 'puma', '~> 3.4'
 
 # Use Devise for Authentication
 gem 'devise', '~> 4.3'
+# Use Ransack for filters
+gem 'ransack', '~> 1.8', '>= 1.8.3'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

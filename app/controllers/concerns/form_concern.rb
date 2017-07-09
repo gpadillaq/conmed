@@ -16,7 +16,7 @@ module FormConcern
     # Agrega un flash alert cuando la lista de +records+ esta vacia, Tambien renderiza la plantilla
     # del index conrrespondiente al controlador.
     def index
-      flash.now[:alert] = 'No existen registros para los datos filtrados' if @records.empty?
+      flash.now[:warning] = 'No existen registros para los datos filtrados' if @records.empty?
     end
 
     ##
@@ -53,7 +53,8 @@ module FormConcern
   ##
   # Optiene la coleccion de datos correspondiente al modelo al que pertenece al controlador
   def scoped_collection
-    @records = model.all
+    @q = model.ransack(params[:q])
+    @records = @q.result
   end
 
   ##
