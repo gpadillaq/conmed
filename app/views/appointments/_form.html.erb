@@ -5,6 +5,7 @@
     </div>
 
     <div class="form-group <%= 'has-error' if @record.errors[:appointment_date].present? %>">
+      <label class="control-label" for="appointment_date">Fecha:</label>
       <div class="input-group date" id="cita-fecha">
         <%= f.text_field :appointment_date, class: 'form-control', placeholder: 'Fecha de la Cita', required: true %>
         <span class="input-group-addon">
