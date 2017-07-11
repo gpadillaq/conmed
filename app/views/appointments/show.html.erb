@@ -1,0 +1,27 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Detalles de la Cita</h3>
+  </div>
+  <div class="panel-body">
+    <%= form_for @record do |f| %>
+        <div class="form-group">
+          <label class="control-label" for="pacient_id">Paciente:</label>
+          <%= Pacient.find(@record.pacient_id).display_name %>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label" for="appointment_date">Fecha:</label>
+          <%= @record.appointment_date.strftime("%d/%m/%Y") %> - <%= @record.appointment_date.strftime("%r") %>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label" for="notes">Notas:</label>
+          <%= @record.notes %>
+        </div>
+
+        <div class="botones-a-la-derecha">
+          <%= link_to 'Volver', appointments_path, class: 'btn btn-info' %>
+        </div>
+    <% end %>
+  </div>
+</div>
