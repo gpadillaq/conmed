@@ -23,12 +23,12 @@
     <% @records.each do |p| %>
         <tr>
           <td><%= Pacient.find(p.pacient_id).display_name %></td>
-          <td><%= p.appointment_date.strftime("%d/%m/%Y") %> - <%= p.appointment_date.strftime("%r") %></td>
-          <td><%= p.created_at.strftime("%d/%m/%Y") %> - <%= p.created_at.strftime("%r") %></td>
+          <td><%= p.appointment_date.strftime("%d/%m/%Y %r") %></td>
+          <td><%= p.created_at.strftime("%d/%m/%Y %r") %></td>
           <td><%= truncate(p.notes, lenght: 20) %></td>
           <td>
             <%= link_to '', appointment_path(p), class: 'glyphicon glyphicon-eye-open' %>
-            <%= link_to '', edit_pacient_path(p), class: 'glyphicon glyphicon-edit' %>
+            <%= link_to '', edit_appointment_path(p), class: 'glyphicon glyphicon-edit' %>
             <%= link_to '', pacient_path(p), class: 'glyphicon glyphicon-trash', confirm: 'Está seguro que desea Eliminar este paciente?' %>
           </td>
         </tr>
