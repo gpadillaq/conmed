@@ -16,7 +16,7 @@ module FormConcern
     # Agrega un flash alert cuando la lista de +records+ esta vacia, Tambien renderiza la plantilla
     # del index conrrespondiente al controlador.
     def index
-      flash.now[:warning] = 'No existen registros para los datos filtrados' if @records.empty?
+      flash.now[:alert] = 'No existen registros para los datos filtrados' if @records.empty?
     end
 
     ##
@@ -107,10 +107,10 @@ module FormConcern
     begin
       @record.attributes = record_params
       @record.save!
-      flash[:success] = 'Datos almacenados exitosamente!'
+      flash[:info] = 'Datos almacenados exitosamente!'
       redirect_to index_path
     rescue ActiveRecord::RecordInvalid
-      flash.now[:danger] = 'Verifique los datos insertados'
+      flash.now[:error] = 'Verifique los datos insertados'
       render back_path
     end
   end

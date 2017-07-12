@@ -31,7 +31,7 @@
           <ul class="dropdown-menu">
             <li><a href="#">Acción 1</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="#">Acción 2</a></li>
+            <li><%= link_to 'Cerrar sesión', destroy_user_session_path, method: :delete %></li>
           </ul>
         </li>
       </ul>
