@@ -17,3 +17,4 @@
 //= require bootstrap.min
 //= require moment
 //= require bootstrap-datetimepicker
+//= require moment/es
