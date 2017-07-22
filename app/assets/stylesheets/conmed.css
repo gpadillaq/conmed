@@ -1,0 +1,7 @@
+/**
+  Este estilo es para que los botones de los formularios
+  esten siempre alineados a la derecha.
+ */
+.botones-a-la-derecha {
+    text-align: right;
+}

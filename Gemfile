@@ -37,6 +37,9 @@ gem 'puma', '~> 3.4'
 
 # Use Devise for Authentication
 gem 'devise', '~> 4.3'
+# Datepicker
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'
 # Use Ransack for filters
 gem 'ransack', '~> 1.8', '>= 1.8.3'
 

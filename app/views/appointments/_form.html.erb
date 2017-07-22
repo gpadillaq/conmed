@@ -1,0 +1,34 @@
+<%= form_for @record do |f| %>
+    <div class="form-group <%= 'has-error' if @record.errors[:pacient].present? %>">
+      <label class="control-label" for="pacient_id">Paciente:</label>
+      <%= f.select(:pacient_id,  Pacient.all.collect {|p| [ p.display_name, p.id ] }, { :class => 'dropdown-toggle', required: true }) %>
+    </div>
+
+    <div class="form-group <%= 'has-error' if @record.errors[:appointment_date].present? %>">
+      <label class="control-label" for="appointment_date">Fecha:</label>
+      <div class="input-group date" id="cita-fecha">
+        <%= f.text_field :appointment_date, class: 'form-control', placeholder: 'Fecha de la Cita', required: true %>
+        <span class="input-group-addon">
+          <span class="glyphicon glyphicon-time"></span>
+        </span>
+      </div>
+    </div>
+
+    <div class="form-group <%= 'has-error' if @record.errors[:pacient].present? %>">
+      <label class="control-label" for="pacient_id">Notas:</label>
+      <%= f.text_area :notes, class: 'form-control', placeholder: 'Notas', rows: "5" %>
+    </div>
+
+    <div class="botones-a-la-derecha">
+      <%= f.submit "Guardar", class: 'btn btn-primary'%>
+      <%= link_to 'Cancelar', appointments_path, class: 'btn btn-danger' %>
+    </div>
+<% end %>
+
+<script type="text/javascript">
+  $(function () {
+    $('#cita-fecha').datetimepicker({
+      format: 'DD/MM/YYYY HH:mm'
+    });
+  });
+</script>

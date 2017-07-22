@@ -13,8 +13,8 @@
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
-        <th>Nombre</th>
-        <th>Apellido</th>
+        <th>Nombres</th>
+        <th>Apellidos</th>
         <th>Género</th>
         <th>Edad</th>
         <th>Cédula</th>
@@ -26,11 +26,10 @@
         <tr>
           <td><%= p.first_name %></td>
           <td><%= p.last_name %></td>
-          <td><%= p.gender %></td>
+          <td><%= Gender.find(p.gender_id).display_name %></td>
           <td><%= p.age.to_i %></td>
           <td><%= p.id_number %></td>
           <td>
-            <%= link_to '', pacient_path(p), class: 'glyphicon glyphicon-eye-open' %>
             <%= link_to '', edit_pacient_path(p), class: 'glyphicon glyphicon-edit' %>
             <%= link_to '', pacient_path(p), class: 'glyphicon glyphicon-trash', confirm: 'Está seguro que desea Eliminar este paciente?' %>
           </td>

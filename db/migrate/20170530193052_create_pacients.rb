@@ -7,9 +7,10 @@ class CreatePacients < ActiveRecord::Migration[5.0]
       t.string :phone
       t.string :email
       t.numeric :age, null: false
-      t.numeric :gender, null: false
+      t.references :gender
 
       t.timestamps
     end
+    add_foreign_key :pacients, :genders
   end
 end

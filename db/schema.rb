@@ -15,6 +15,15 @@ ActiveRecord::Schema.define(version: 20170616035517) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "appointments", force: :cascade do |t|
+    t.integer  "pacient_id",       null: false
+    t.datetime "appointment_date", null: false
+    t.string   "notes"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["pacient_id"], name: "index_appointments_on_pacient_id", using: :btree
+  end
+
   create_table "clinics", force: :cascade do |t|
     t.string   "name",       null: false
     t.string   "address",    null: false
@@ -30,6 +39,12 @@ ActiveRecord::Schema.define(version: 20170616035517) do
   create_table "countries", force: :cascade do |t|
     t.string "name",         null: false
     t.string "abbreviation", null: false
+  end
+
+  create_table "genders", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "pacients", force: :cascade do |t|
@@ -68,6 +83,7 @@ ActiveRecord::Schema.define(version: 20170616035517) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "appointments", "pacients"
   add_foreign_key "clinics", "states"
   add_foreign_key "states", "countries"
 end

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   resources :clinic
   resources :pacients
+  resources :appointments
 
   root 'dashboard#main'
 end

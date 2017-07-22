@@ -7,6 +7,10 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 Clinic.create({ name: 'Clínica', address: 'Dirección'})
+
 if User.all.blank?
   User.create!(email: 'admin@conmed.com', password: 'adminC0nm3d', password_confirmation: 'adminC0nm3d')
 end
+
+Gender.create({ name: 'Masculino' })
+Gender.create({ name: 'Femenino' })
