@@ -13,6 +13,7 @@
     <thead>
     <tr>
       <th>Paciente</th>
+      <th>Cédula</th>
       <th>Fecha de la Cita</th>
       <th>Fecha de Creación de la Cita</th>
       <th>Notas</th>
@@ -21,14 +22,16 @@
     </thead>
     <tbody>
     <% @records.each do |p| %>
+    <% pacient =  Pacient.find(p.pacient_id) %>
         <tr>
-          <td><%= Pacient.find(p.pacient_id).display_name %></td>
-          <td><%= p.appointment_date.strftime("%d/%m/%Y") %> - <%= p.appointment_date.strftime("%r") %></td>
-          <td><%= p.created_at.strftime("%d/%m/%Y") %> - <%= p.created_at.strftime("%r") %></td>
+          <td><%= pacient.display_name %></td>
+          <td><%= pacient.id_number %></td>
+          <td><%= p.appointment_date.strftime("%d/%m/%Y %r") %></td>
+          <td><%= p.created_at.strftime("%d/%m/%Y %r") %></td>
           <td><%= truncate(p.notes, lenght: 20) %></td>
           <td>
             <%= link_to '', appointment_path(p), class: 'glyphicon glyphicon-eye-open' %>
-            <%= link_to '', edit_pacient_path(p), class: 'glyphicon glyphicon-edit' %>
+            <%= link_to '', edit_appointment_path(p), class: 'glyphicon glyphicon-edit' %>
             <%= link_to '', pacient_path(p), class: 'glyphicon glyphicon-trash', confirm: 'Está seguro que desea Eliminar este paciente?' %>
           </td>
         </tr>

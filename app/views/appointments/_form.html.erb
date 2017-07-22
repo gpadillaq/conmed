@@ -7,7 +7,7 @@
     <div class="form-group <%= 'has-error' if @record.errors[:appointment_date].present? %>">
       <label class="control-label" for="appointment_date">Fecha:</label>
       <div class="input-group date" id="cita-fecha">
-        <%= f.text_field :appointment_date, class: 'form-control', placeholder: 'Fecha de la Cita', required: true %>
+        <%= f.text_field :appointment_date, class: 'form-control', placeholder: 'Fecha de la Cita', required: true, value: @record.appointment_date.try(:strftime, "%d/%m/%Y %r") %>
         <span class="input-group-addon">
           <span class="glyphicon glyphicon-time"></span>
         </span>
@@ -28,7 +28,8 @@
 <script type="text/javascript">
   $(function () {
     $('#cita-fecha').datetimepicker({
-      format: 'DD/MM/YYYY HH:mm'
+      format: 'DD/MM/YYYY hh:mm A',
+      locale: 'es'
     });
   });
 </script>
