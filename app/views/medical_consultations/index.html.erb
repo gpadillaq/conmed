@@ -1,0 +1,37 @@
+<h1>Consultas</h1>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Búsqueda</h3>
+  </div>
+  <div class="panel-body">
+
+  </div>
+</div>
+
+<div>
+  <table class="table table-bordered table-striped">
+    <thead>
+    <tr>
+      <th>Paciente</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @records.each do |p| %>
+        <% pacient =  Pacient.find(p.pacient_id) %>
+        <tr>
+          <td><%= pacient.display_name %></td>
+          <td>
+            <%= link_to '', appointment_path(p), class: 'glyphicon glyphicon-eye-open' %>
+            <%= link_to '', edit_appointment_path(p), class: 'glyphicon glyphicon-edit' %>
+            <%= link_to '', pacient_path(p), class: 'glyphicon glyphicon-trash', confirm: 'Está seguro que desea Eliminar este paciente?' %>
+          </td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+
+<div>
+  <%= link_to 'Nuevo', new_appointment_path, class: 'btn btn-default pull-right' %>
+</div>
