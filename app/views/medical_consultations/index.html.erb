@@ -4,7 +4,7 @@
     <h3 class="panel-title">Búsqueda</h3>
   </div>
   <div class="panel-body">
-
+    <%= render 'search_form' %>
   </div>
 </div>
 
@@ -13,6 +13,7 @@
     <thead>
     <tr>
       <th>Paciente</th>
+      <th>Fecha de la Consulta</th>
       <th></th>
     </tr>
     </thead>
@@ -21,10 +22,11 @@
         <% pacient =  Pacient.find(p.pacient_id) %>
         <tr>
           <td><%= pacient.display_name %></td>
+          <td><%= p.medical_consultation_date %></td>
           <td>
-            <%= link_to '', appointment_path(p), class: 'glyphicon glyphicon-eye-open' %>
-            <%= link_to '', edit_appointment_path(p), class: 'glyphicon glyphicon-edit' %>
-            <%= link_to '', pacient_path(p), class: 'glyphicon glyphicon-trash', confirm: 'Está seguro que desea Eliminar este paciente?' %>
+            <%= link_to '', medical_consultations_path(p), class: 'glyphicon glyphicon-eye-open' %>
+            <%= link_to '', edit_medical_consultations_path(p), class: 'glyphicon glyphicon-edit' %>
+            <%= link_to '', medical_consultations_path(p), class: 'glyphicon glyphicon-trash', confirm: 'Está seguro que desea Eliminar esta consulta?' %>
           </td>
         </tr>
     <% end %>

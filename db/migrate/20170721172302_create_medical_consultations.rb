@@ -11,7 +11,9 @@ class CreateMedicalConsultations < ActiveRecord::Migration[5.0]
       t.text :diagnostic, null: false
       t.text :treatment, null: false
       t.text :test_results
+      t.datetime :medical_consultation_date
       t.datetime :next_date
+      t.decimal :cost, precision:14, scale: 2
 
       t.timestamps
     end
