@@ -24,8 +24,8 @@
           <td><%= pacient.display_name %></td>
           <td><%= p.medical_consultation_date %></td>
           <td>
-            <%= link_to '', medical_consultations_path(p), class: 'glyphicon glyphicon-eye-open' %>
-            <%= link_to '', edit_medical_consultations_path(p), class: 'glyphicon glyphicon-edit' %>
+            <%= link_to '', medical_consultation_path(p), class: 'glyphicon glyphicon-eye-open' %>
+            <%= link_to '', edit_medical_consultation_path(p), class: 'glyphicon glyphicon-edit' %>
             <%= link_to '', medical_consultations_path(p), class: 'glyphicon glyphicon-trash', confirm: 'Está seguro que desea Eliminar esta consulta?' %>
           </td>
         </tr>
@@ -35,5 +35,5 @@
 </div>
 
 <div>
-  <%= link_to 'Nuevo', new_appointment_path, class: 'btn btn-default pull-right' %>
+  <%= link_to 'Nuevo', new_medical_consultation_path, class: 'btn btn-default pull-right' %>
 </div>
