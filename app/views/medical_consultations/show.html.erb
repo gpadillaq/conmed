@@ -1,0 +1,63 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Detalles de la Consulta</h3>
+  </div>
+  <div class="panel-body">
+    <%= form_for @record do |f| %>
+        <div class="form-group <%= 'has-error' if @record.errors[:pacient].present? %>">
+          <label class="control-label" for="pacient_id">Paciente:</label>
+          <%= Pacient.find(@record.pacient_id).display_name %>
+        </div>
+
+        <div class="form-group <%= 'has-error' if @record.errors[:medical_consultation_date].present? %>">
+          <label class="control-label" for="medical_consultation_date">Fecha de la Consulta:</label>
+          <%= @record.medical_consultation_date.strftime("%d/%m/%Y %r") %>
+        </div>
+
+        <div class="form-group <%= 'has-error' if @record.errors[:weight].present? %>">
+          <label class="control-label" for="weight">Peso:</label>
+          <%= @record.weight %>
+        </div>
+
+        <div class="form-group <%= 'has-error' if @record.errors[:height].present? %>">
+          <label class="control-label" for="height">Altura:</label>
+          <%= @record.height %>
+        </div>
+
+        <div class="form-group <%= 'has-error' if @record.errors[:blood_preasure].present? %>">
+          <label class="control-label" for="blood_preasure">Presión Sanguínea:</label>
+          <%= @record.blood_preasure %>
+        </div>
+
+        <div class="form-group <%= 'has-error' if @record.errors[:symptoms].present? %>">
+          <label class="control-label" for="symptoms">Síntomas:</label>
+          <%= @record.symptoms %>
+        </div>
+
+        <div class="form-group <%= 'has-error' if @record.errors[:test_results].present? %>">
+          <label class="control-label" for="test_results">Resultados de Exámenes:</label>
+          <%= @record.test_results %>
+        </div>
+
+        <div class="form-group <%= 'has-error' if @record.errors[:diagnostic].present? %>">
+          <label class="control-label" for="diagnostic">Diagnóstico:</label>
+          <%= @record.diagnostic %>
+        </div>
+
+        <div class="form-group <%= 'has-error' if @record.errors[:treatment].present? %>">
+          <label class="control-label" for="treatment">Tratamiento:</label>
+          <%= @record.treatment %>
+        </div>
+
+        <div class="form-group <%= 'has-error' if @record.errors[:next_date].present? %>">
+          <label class="control-label" for="next_date">Fecha de la Próxima Consulta:</label>
+          <%= @record.next_date.strftime("%d/%m/%Y %r") %>
+        </div>
+
+        <div class="botones-a-la-derecha">
+          <%= f.submit "Guardar", class: 'btn btn-primary'%>
+          <%= link_to 'Cancelar', medical_consultations_path, class: 'btn btn-danger' %>
+        </div>
+    <% end %>
+  </div>
+</div>

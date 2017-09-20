@@ -1,0 +1,80 @@
+<%= form_for @record do |f| %>
+    <div class="form-group <%= 'has-error' if @record.errors[:pacient].present? %>">
+      <label class="control-label" for="pacient_id">Paciente:</label>
+      <%= f.select(:pacient_id,  Pacient.all.collect {|p| [ p.display_name, p.id ] }, { :class => 'dropdown-toggle', required: true }) %>
+    </div>
+
+    <div class="form-group <%= 'has-error' if @record.errors[:medical_consultation_date].present? %>">
+      <label class="control-label" for="medical_consultation_date">Fecha de la Consulta:</label>
+      <div class="input-group date" id="fecha-consulta">
+        <%= f.text_field :medical_consultation_date, class: 'form-control', placeholder: 'Fecha de la Consulta', required: true, value: @record.medical_consultation_date.try(:strftime, "%d/%m/%Y %r") %>
+        <span class="input-group-addon">
+          <span class="glyphicon glyphicon-time"></span>
+        </span>
+      </div>
+    </div>
+
+    <div class="form-group <%= 'has-error' if @record.errors[:weight].present? %>">
+      <label class="control-label" for="weight">Peso:</label>
+      <%= f.text_field :weight, class: 'form-control', placeholder: 'Peso', required: true %>
+    </div>
+
+    <div class="form-group <%= 'has-error' if @record.errors[:height].present? %>">
+      <label class="control-label" for="height">Altura:</label>
+      <%= f.text_field :height, class: 'form-control', placeholder: 'Altura', required: true %>
+    </div>
+
+    <div class="form-group <%= 'has-error' if @record.errors[:blood_preasure].present? %>">
+      <label class="control-label" for="blood_preasure">Presión Sanguínea:</label>
+      <%= f.text_field :blood_preasure, class: 'form-control', placeholder: 'Presión Sanguínea', required: true %>
+    </div>
+
+    <div class="form-group <%= 'has-error' if @record.errors[:symptoms].present? %>">
+      <label class="control-label" for="symptoms">Síntomas:</label>
+      <%= f.text_area :symptoms, class: 'form-control', placeholder: 'Síntomas', rows: "5" %>
+    </div>
+
+    <div class="form-group <%= 'has-error' if @record.errors[:test_results].present? %>">
+      <label class="control-label" for="test_results">Resultados de Exámenes:</label>
+      <%= f.text_area :test_results, class: 'form-control', placeholder: 'Resultados de Exámenes', rows: "5" %>
+    </div>
+
+    <div class="form-group <%= 'has-error' if @record.errors[:diagnostic].present? %>">
+      <label class="control-label" for="diagnostic">Diagnóstico:</label>
+      <%= f.text_area :diagnostic, class: 'form-control', placeholder: 'Diagnóstico', rows: "5" %>
+    </div>
+
+    <div class="form-group <%= 'has-error' if @record.errors[:treatment].present? %>">
+      <label class="control-label" for="treatment">Tratamiento:</label>
+      <%= f.text_area :treatment, class: 'form-control', placeholder: 'Tratamiento', rows: "5" %>
+    </div>
+
+    <div class="form-group <%= 'has-error' if @record.errors[:next_date].present? %>">
+      <label class="control-label" for="next_date">Fecha de la Próxima Consulta:</label>
+      <div class="input-group date" id="fecha-proxima-consulta">
+        <%= f.text_field :next_date, class: 'form-control', placeholder: 'Fecha de la Próxima Consulta', required: true, value: @record.medical_consultation_date.try(:strftime, "%d/%m/%Y %r") %>
+        <span class="input-group-addon">
+          <span class="glyphicon glyphicon-time"></span>
+        </span>
+      </div>
+    </div>
+
+    <div class="botones-a-la-derecha">
+      <%= f.submit "Guardar", class: 'btn btn-primary'%>
+      <%= link_to 'Cancelar', medical_consultations_path, class: 'btn btn-danger' %>
+    </div>
+<% end %>
+
+<script type="text/javascript">
+    $(function () {
+        $('#fecha-consulta').datetimepicker({
+            format: 'DD/MM/YYYY hh:mm A',
+            locale: 'es'
+        });
+
+        $('#fecha-proxima-consulta').datetimepicker({
+            format: 'DD/MM/YYYY hh:mm A',
+            locale: 'es'
+        });
+    });
+</script>
